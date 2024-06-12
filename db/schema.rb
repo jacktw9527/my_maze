@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_182116) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_183910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,6 +18,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_182116) do
     t.string "name", null: false
     t.jsonb "initial_coordinate"
     t.jsonb "goal_coordinate"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "node_borders", force: :cascade do |t|
+    t.integer "node_id", null: false
+    t.integer "color", default: 0
+    t.integer "thickness", default: 1
+    t.integer "direction", null: false
+    t.jsonb "position"
+    t.integer "width"
+    t.integer "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

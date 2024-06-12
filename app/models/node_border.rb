@@ -1,0 +1,2 @@
+class NodeBorder < ApplicationRecord
+end
