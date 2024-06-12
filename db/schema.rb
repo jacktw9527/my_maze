@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_064624) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_182116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,4 +22,18 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_064624) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "nodes", force: :cascade do |t|
+    t.integer "maze_id", null: false
+    t.integer "color", default: 0
+    t.jsonb "coordinate"
+    t.jsonb "position"
+    t.bigint "parent_node_id"
+    t.integer "width"
+    t.integer "height"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_node_id"], name: "index_nodes_on_parent_node_id"
+  end
+
+  add_foreign_key "nodes", "nodes", column: "parent_node_id"
 end
