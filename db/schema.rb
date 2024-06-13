@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_13_084716) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_13_140106) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,18 +37,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_084716) do
     t.index ["node_id", "neighbor_id"], name: "index_neighbors_on_node_id_and_neighbor_id", unique: true
   end
 
-  create_table "node_borders", force: :cascade do |t|
-    t.integer "node_id", null: false
-    t.integer "color", default: 0
-    t.integer "thickness", default: 1
-    t.integer "direction", null: false
-    t.jsonb "position"
-    t.integer "width"
-    t.integer "height"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "nodes", force: :cascade do |t|
     t.integer "maze_id", null: false
     t.integer "color", default: 0
@@ -59,6 +47,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_13_084716) do
     t.integer "height"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.jsonb "borders"
     t.index ["parent_node_id"], name: "index_nodes_on_parent_node_id"
   end
 
