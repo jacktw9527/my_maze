@@ -10,9 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_12_183910) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_12_185514) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "connected_neighbors", id: false, force: :cascade do |t|
+    t.bigint "node_id", null: false
+    t.bigint "connected_neighbor_id", null: false
+    t.index ["connected_neighbor_id", "node_id"], name: "index_connected_neighbors_on_connected_neighbor_id_and_node_id", unique: true
+    t.index ["node_id", "connected_neighbor_id"], name: "index_connected_neighbors_on_node_id_and_connected_neighbor_id", unique: true
+  end
 
   create_table "mazes", force: :cascade do |t|
     t.string "name", null: false
@@ -20,6 +27,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_12_183910) do
     t.jsonb "goal_coordinate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "neighbors", id: false, force: :cascade do |t|
+    t.bigint "node_id", null: false
+    t.bigint "neighbor_id", null: false
+    t.index ["neighbor_id", "node_id"], name: "index_neighbors_on_neighbor_id_and_node_id", unique: true
+    t.index ["node_id", "neighbor_id"], name: "index_neighbors_on_node_id_and_neighbor_id", unique: true
   end
 
   create_table "node_borders", force: :cascade do |t|
