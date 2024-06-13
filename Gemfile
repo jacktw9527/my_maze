@@ -46,6 +46,8 @@ gem "bootsnap", require: false
 
 gem 'pry-rails'
 
+gem "vite_rails"
+
 group :development, :test do
   gem 'awesome_print'
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
