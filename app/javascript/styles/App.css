@@ -1,0 +1,103 @@
+.app {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  margin: 20px 0;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.popup input {
+  margin-right: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.answer-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px; /* Add space between answer-buttons and maze-container */
+}
+
+.show-answer-button,
+.hide-answer-button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.maze-container {
+  position: relative;
+  margin: 0 auto;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.maze-node {
+  position: absolute;
+  box-sizing: border-box;
+}
+
+.entry-exit-points {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.entry-point,
+.exit-point {
+  width: 25px;
+  height: 25px;
+  margin: 0 10px;
+}
+
+.entry-comment,
+.exit-comment {
+  margin: 0 10px;
+}
+
+.loading-spinner {
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1100; /* Ensure the spinner is above all other elements */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
