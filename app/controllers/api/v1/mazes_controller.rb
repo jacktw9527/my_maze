@@ -10,6 +10,8 @@ class Api::V1::MazesController < ApplicationController
     else
       render json: { success: false, error: result[:error_message] }, status: :internal_server_error
     end
+  rescue StandardError => e
+    Rails.logger.error("ERROR:#{e.message}\n#{e.backtrace.join("\n")}")
   end
 
   def search
@@ -19,6 +21,8 @@ class Api::V1::MazesController < ApplicationController
     else
       render json: { success: false, error: result[:error_message] }, status: :internal_server_error
     end
+  rescue StandardError => e
+    Rails.logger.error("ERROR:#{e.message}\n#{e.backtrace.join("\n")}")
   end
 
   private
