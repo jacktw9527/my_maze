@@ -79,6 +79,6 @@ test:
 #
 production:
   <<: *default
-  database: my_maze_production
-  username: my_maze
+  database: my_maze_database
+  username: my_maze_database_user
   password: <%= ENV["DATABASE_URL"] %>
